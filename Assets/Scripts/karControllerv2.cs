@@ -11,6 +11,7 @@ public class karControllerv2 : MonoBehaviour
     public GameObject acelereador;
     public ObjetosManager objetosManager;
     public GameObject items;
+    public GameObject none;
     public Transform spawner;
 
     float speed, currentSpeed;
@@ -75,6 +76,7 @@ public class karControllerv2 : MonoBehaviour
         //Activación de items :D
         if (Input.GetButtonDown("Fire1")) {
             LanzarPower();
+            items = none;
         }
     }
 

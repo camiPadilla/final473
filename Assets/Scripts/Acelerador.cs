@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Acelerador : MonoBehaviour
 {
-    public GameObject kart;
-    Rigidbody krtdb;
+    public Rigidbody krtdb;
     // Start is called before the first frame update
     void Start()
     {
-        krtdb = kart.GetComponent<Rigidbody>();
+        krtdb = krtdb.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -19,10 +18,10 @@ public class Acelerador : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (kart.CompareTag("kart"))
+        if (other.CompareTag("kart"))
         {
             Vector3 direccion = krtdb.velocity.normalized;
-            krtdb.AddForce(direccion *5f, ForceMode.VelocityChange);
+            krtdb.AddForce(direccion *5f, ForceMode.Impulse);
         }
         
     }
