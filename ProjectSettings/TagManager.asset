@@ -3,23 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - kart
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Karts
   - Water
   - UI
-  - 
-  - 
-  - PostProcessing
+  - pista
   - Ground
-  - Environment
-  - Track
-  - CrashObject
-  - Kart
-  - TrainingCheckpoints
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

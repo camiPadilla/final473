@@ -4,15 +4,47 @@ using UnityEngine;
 
 public class Dinamita : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float areaExplosion = 5f;
+    public float fuerzaExplosion = 70f;
+    public LayerMask capasAfectadas;  // Para filtrar qué objetos afectan la explosión
+
+    private Rigidbody rb;
+    private bool haExplotado = false;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnCollisionEnter(Collision collision)
     {
-        
+        if (!haExplotado)
+        {
+            Explotar();
+            haExplotado = true;
+        }
+    }
+
+    void Explotar()
+    {
+        // Detectar objetos cercanos
+        Collider[] objetos = Physics.OverlapSphere(transform.position, areaExplosion, capasAfectadas);
+
+        foreach (Collider obj in objetos)
+        {
+            Rigidbody rbObj = obj.GetComponent<Rigidbody>();
+            if (rbObj != null)
+            {
+                // Aplicar fuerza de explosión
+                rbObj.AddExplosionForce(fuerzaExplosion, transform.position, areaExplosion);
+            }
+
+            // Aquí podés agregar lógica para daño, efectos, etc.
+        }
+
+        // Aquí podés agregar efectos visuales o sonido de explosión
+
+        // Destruir la dinamita después de explotar
+        Destroy(gameObject);
     }
 }

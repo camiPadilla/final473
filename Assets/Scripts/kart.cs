@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class kart : MonoBehaviour
@@ -9,20 +11,22 @@ public class kart : MonoBehaviour
     public Rigidbody kartrb;
     public GameObject acelerador;
     public ObjetosManager objetosManager;
-    GameObject item;
-
-
+    public GameObject item;
+    public Transform spawnObj;
+    [SerializeField] private float veloRtot;
+    [SerializeField] Transform miTrans;
 
     // Start is called before the first frame update
     void Start()
     {
-        kartrb = GetComponent<Rigidbody>();
+        //kartrb = GetComponent<Rigidbody>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.position = kartrb.transform.position;
         Movimiento();
         if (Input.GetKeyDown(KeyCode.P)) {
             LanzarPower();
@@ -30,18 +34,13 @@ public class kart : MonoBehaviour
     }
     public void Movimiento()
     {
-        float movX = Input.GetAxis("Horizontal");
-        float movZ = Input.GetAxis("Vertical");
-        Vector3 direccion = new Vector3(movX, 0, movZ);
-        direccion.Normalize();
-        kartrb.AddForce(direccion * speed);
-            
+        transform.position = kartrb.transform.position;
 
     }
-    
+
     public void RecItem(GameObject itemAd) {
         item = itemAd;
-        
+
     }
     public void LanzarPower() { 
         if (item.name == "Coca")
@@ -53,9 +52,11 @@ public class kart : MonoBehaviour
             }
         }
         if (item.name == "Pilfrut") {
-            print("invulnerable");
+            print("invulnerable"); 
         }
         if (item.name == "Dinamita") {
+            GameObject dina = Instantiate(item,spawnObj.transform.position,spawnObj.transform.rotation);
+            dina.GetComponent<Rigidbody>().AddForce(transform.forward+transform.up*10f,ForceMode.Impulse);
             print("explosion");
         }
         if (item.name == "MAS") {

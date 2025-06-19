@@ -22,7 +22,7 @@ public class Acelerador : MonoBehaviour
         if (kart.CompareTag("kart"))
         {
             Vector3 direccion = krtdb.velocity.normalized;
-            krtdb.AddForce(direccion *10, ForceMode.Impulse);
+            krtdb.AddForce(direccion *5f, ForceMode.VelocityChange);
         }
         
     }

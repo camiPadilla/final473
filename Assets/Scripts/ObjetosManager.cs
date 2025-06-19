@@ -8,14 +8,14 @@ public class ObjetosManager : MonoBehaviour
     public GameObject kart;
     public GameObject cajaPrefab;
     public List<GameObject> items;
+
     Rigidbody kartR;
-    GameObject item;
-    kart kartCod;
+    karControllerv2 kartCod;
 
     public void Start()
     {
         kartR = kart.GetComponent<Rigidbody>();
-        kartCod = kart.GetComponent<kart>();
+        kartCod = kart.GetComponent<karControllerv2>();
     }
     public void SpawnearCajaDespues( Vector3 posicion)
     {
@@ -32,26 +32,22 @@ public class ObjetosManager : MonoBehaviour
     public void RandItem() {
         int aleatorio = Random.Range(0, 4);
         switch (aleatorio) {
-            case 0: //DINAMITA
+            case 0: //dinamita
                 print("dinamita");
-                item = items[0];
-                kartCod.RecItem(item); 
+                kartCod.RecItem(items[0]); 
                 break;
             case 1: //pilfrut
                 print("pilfrut");
-                item = items[1];
-                kartCod.RecItem(item);
+                kartCod.RecItem(items[1]);
                 break;
             case 2: //coca
                 print("coca");
                 //guardar en kart
-                item = items[2];
-                kartCod.RecItem(item);
+                kartCod.RecItem(items[2]);
                 break;
             case 3: //MAS
                 print("MAS IPSP");
-                item = items[3];
-                kartCod.RecItem(item);
+                kartCod.RecItem(items[3]);
                 break;
         }
     }
