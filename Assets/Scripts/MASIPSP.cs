@@ -15,4 +15,16 @@ public class MASIPSP : MonoBehaviour
     {
         
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("kart")) {
+            Rigidbody rb = other.GetComponent<Rigidbody>();
+            print("si reconozco");
+            for (int i = 0; i <= 15; i++) { 
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+            Destroy(gameObject);
+        }
+    }
 }

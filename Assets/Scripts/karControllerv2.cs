@@ -153,7 +153,7 @@ public class karControllerv2 : MonoBehaviour
         if (items.name == "MAS")
         {
             print("MASSSS");
-            Instantiate(items, transform.position, Quaternion.identity);
+            Instantiate(items, transform.position - transform.forward*5f, Quaternion.identity);
         }
     }
 }
