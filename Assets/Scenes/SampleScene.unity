@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 167656043}
   m_Layer: 0
   m_Name: Sphere_2P
-  m_TagString: kart
+  m_TagString: kart2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1581,7 +1581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 941ba96dfdc9073479e2f1966b6f6d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kart: {fileID: 918395879}
   cajaPrefab: {fileID: 516950389}
   items:
   - {fileID: 4451470394597867417, guid: bb93e3d1ec5433041b61765dd25cf7b6, type: 3}
@@ -1589,6 +1588,9 @@ MonoBehaviour:
   - {fileID: 2271163323966930691, guid: 193823c224c921f449a7241582d8217d, type: 3}
   - {fileID: 1268242889}
   - {fileID: 2813825255990063916, guid: 02b6bf257b581bc4f90fcb0df0efbbc0, type: 3}
+  karts:
+  - {fileID: 918395879}
+  - {fileID: 1767640528}
 --- !u!1 &753024945 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8067268390117022608, guid: 693eeca4d28043441b9a548c7104aedf, type: 3}
@@ -2695,7 +2697,7 @@ GameObject:
   - component: {fileID: 1767640531}
   m_Layer: 0
   m_Name: Kart_Player2
-  m_TagString: kart
+  m_TagString: kart2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

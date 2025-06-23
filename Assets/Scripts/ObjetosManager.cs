@@ -5,17 +5,16 @@ using UnityEngine.Rendering;
 
 public class ObjetosManager : MonoBehaviour
 {
-    public GameObject kart;
     public GameObject cajaPrefab;
     public List<GameObject> items;
-
-    Rigidbody kartR;
+    public List<GameObject> karts;
     karControllerv2 kartCod;
+    karControllerv3 kartCod2;
 
     public void Start()
     {
-        kartR = kart.GetComponent<Rigidbody>();
-        kartCod = kart.GetComponent<karControllerv2>();
+        kartCod = karts[0].GetComponent<karControllerv2>();
+        kartCod2 = karts[1].GetComponent<karControllerv3>();
     }
     public void SpawnearCajaDespues( Vector3 posicion)
     {
@@ -29,12 +28,14 @@ public class ObjetosManager : MonoBehaviour
         // Instancia la caja en la misma posición
         Instantiate(prefab, posicion, Quaternion.identity);
     }
-    public void RandItem() {
+    public void RandItemJ1()
+    {
         int aleatorio = Random.Range(0, 4);
-        switch (aleatorio) {
+        switch (aleatorio)
+        {
             case 0: //dinamita
                 print("dinamita");
-                kartCod.RecItem(items[0]); 
+                kartCod.RecItem(items[0]);
                 break;
             case 1: //pilfrut
                 print("pilfrut");
@@ -48,6 +49,30 @@ public class ObjetosManager : MonoBehaviour
             case 3: //MAS
                 print("MAS IPSP");
                 kartCod.RecItem(items[3]);
+                break;
+        }
+    }
+    //No quisiera usar mas codigo pero bueh....
+   public void RandItemJ2(){
+        int aleatorio = Random.Range(0, 4);
+        switch (aleatorio)
+        {
+            case 0: //dinamita
+                print("dinamita");
+                kartCod2.RecItem2(items[0]);
+                break;
+            case 1: //pilfrut
+                print("pilfrut");
+                kartCod2.RecItem2(items[1]);
+                break;
+            case 2: //coca
+                print("coca");
+                //guardar en kart
+                kartCod2.RecItem2(items[2]);
+                break;
+            case 3: //MAS
+                print("MAS IPSP");
+                kartCod2.RecItem2(items[3]);
                 break;
         }
     }

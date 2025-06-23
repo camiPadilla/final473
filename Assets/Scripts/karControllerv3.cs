@@ -86,7 +86,7 @@ public class karControllerv3 : MonoBehaviour
         if (Input.GetButtonDown("Fire1_P2"))
         {
             Debug.Log("CUADRADO presionado");
-            LanzarPower();
+            LanzarPower2();
             items = none;
         }
     }
@@ -137,12 +137,12 @@ public class karControllerv3 : MonoBehaviour
             yield return null;
         }
     }
-    public void RecItem(GameObject itemAd)
+    public void RecItem2(GameObject itemAd)
     {
         items = itemAd;
 
     }
-    public void LanzarPower()
+    public void LanzarPower2()
     {
         if (items.name == "Coca")
         {

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - kart
+  - kart2
   layers:
   - Default
   - TransparentFX

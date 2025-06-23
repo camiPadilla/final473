@@ -9,19 +9,24 @@ public class CajaRandom : MonoBehaviour
 
     private void Start()
     {
-        // Si no se asignó manualmente el manager, buscarlo automáticamente
         if (objetosManager == null)
+        {
             objetosManager = FindObjectOfType<ObjetosManager>();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("kart")) // asegurate de que el jugador tenga este tag
+        objetosManager.SpawnearCajaDespues(transform.position);
+
+        if (other.CompareTag("kart")) 
         {
-            // Pido al mi ObjetosManager que spawnee la nueva caja 
-            objetosManager.SpawnearCajaDespues(transform.position);
-            objetosManager.RandItem();
-            Destroy(gameObject);
+            objetosManager.RandItemJ1();
         }
+        if(other.CompareTag("kart2"))
+        {
+            objetosManager.RandItemJ2();
+        }
+                Destroy(gameObject);
     }
 }
