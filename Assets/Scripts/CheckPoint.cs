@@ -20,7 +20,7 @@ public class CheckPoint : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("kart")) {
+        if (other.CompareTag("kart") || other.CompareTag("kart2")) {
             print("CUENTAAA");
             gamCode.cont +=1 ;
             gamCode.ContVueltas();

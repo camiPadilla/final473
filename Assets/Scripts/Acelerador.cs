@@ -18,7 +18,7 @@ public class Acelerador : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("kart"))
+        if (other.CompareTag("kart")||other.CompareTag("kart2"))
         {
             Vector3 direccion = krtdb.velocity.normalized;
             krtdb.AddForce(direccion *5f, ForceMode.Impulse);

@@ -6,7 +6,7 @@ public class Dinamita : MonoBehaviour
 {
     public float areaExplosion = 5f;
     public float fuerzaExplosion = 70f;
-    public LayerMask capasAfectadas;  // Para filtrar qué objetos afectan la explosión
+    public LayerMask capasAfectadas;  
 
     private Rigidbody rb;
     private bool haExplotado = false;
@@ -37,9 +37,12 @@ public class Dinamita : MonoBehaviour
             {
                 // Aplicar fuerza de explosión
                 rbObj.AddExplosionForce(fuerzaExplosion, transform.position, areaExplosion);
+                rbObj.isKinematic = true;
             }
 
             // Aquí podés agregar lógica para daño, efectos, etc.
+            rbObj.velocity = Vector3.zero;
+            rbObj.isKinematic = false;
         }
 
         // Aquí podés agregar efectos visuales o sonido de explosión

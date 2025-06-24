@@ -21,20 +21,24 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (vuelta == 4) {
+            print("juego terminado");
+        }
     }
 
     public void ContVueltas() {
         switch (cont) { 
-            case 1:
-                vuelta = 1; break;
-            case 2:
-                vuelta = 2; break;
-            case 3:
-                vuelta = 3; break;
             case 4:
-                vuelta = 4; 
-                   print("juego terminado");break;
+                vuelta = 1; break;
+            case 8:
+                vuelta = 2; break;
+            case 12:
+                vuelta = 3; break;
+            case 16:
+                vuelta = 4; break;
         }
+    }
+    public void RegistrarCheck() { 
+        
     }
 }

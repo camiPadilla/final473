@@ -34,7 +34,7 @@ public class karControllerv3 : MonoBehaviour
         // Acelerar L1
         if ( Input.GetButton("Fire2_P2"))
         {
-            Debug.Log("L1");
+            //Debug.Log("L1");
             speed = acceleration;
         }
         else {

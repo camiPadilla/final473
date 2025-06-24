@@ -17,14 +17,19 @@ public class MASIPSP : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("kart")) {
-            Rigidbody rb = other.GetComponent<Rigidbody>();
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        if (other.CompareTag("kart") || other.CompareTag("kart2")) {
+            
             print("si reconozco");
-            for (int i = 0; i <= 15; i++) { 
-                rb.velocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
-            }
+            StartCoroutine(Mas(rb));
+            rb.isKinematic = false;
             Destroy(gameObject);
         }
+    }
+    IEnumerator Mas(Rigidbody rb) { 
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.isKinematic = true;
+        yield return new WaitForSeconds(7);
     }
 }

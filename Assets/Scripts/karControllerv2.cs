@@ -20,6 +20,10 @@ public class karControllerv2 : MonoBehaviour
     float driftPower;
     bool drifting;
 
+    //Para el registro de vueltas y checkpoints
+    int checkpointsig;
+    int checkpointact;
+
     [Header("Parameters")]
     public float acceleration = 30f;
     public float steering = 80f;
