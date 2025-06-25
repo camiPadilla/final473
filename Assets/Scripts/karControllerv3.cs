@@ -13,6 +13,7 @@ public class karControllerv3 : MonoBehaviour
     public GameObject items;
     public GameObject none;
     public Transform spawner;
+    public bool control;
 
     float speed, currentSpeed;
     float rotate, currentRotate;
@@ -168,4 +169,18 @@ public class karControllerv3 : MonoBehaviour
             Instantiate(items, transform.position - transform.forward*5f, Quaternion.identity);
         }
     }
+    public void Efecto()
+    {
+        StartCoroutine(Congelado());
+    }
+
+    IEnumerator Congelado()
+    {
+        control = false; 
+        sphere.velocity = Vector3.zero;
+        sphere.angularVelocity = Vector3.zero;
+        yield return new WaitForSeconds(7f);
+        control = true;
+    }
+
 }

@@ -17,12 +17,12 @@ public class MASIPSP : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Rigidbody rb = other.GetComponent<Rigidbody>();
+       
         if (other.CompareTag("kart") || other.CompareTag("kart2")) {
             
             print("si reconozco");
+            Rigidbody rb = other.GetComponent<Rigidbody>();
             StartCoroutine(Mas(rb));
-            rb.isKinematic = false;
             Destroy(gameObject);
         }
     }
@@ -30,6 +30,9 @@ public class MASIPSP : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         rb.isKinematic = true;
-        yield return new WaitForSeconds(7);
+
+        yield return new WaitForSeconds(10f);
+
+        rb.isKinematic = false;
     }
 }

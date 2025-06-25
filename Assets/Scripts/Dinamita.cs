@@ -27,7 +27,6 @@ public class Dinamita : MonoBehaviour
 
     void Explotar()
     {
-        // Detectar objetos cercanos
         Collider[] objetos = Physics.OverlapSphere(transform.position, areaExplosion, capasAfectadas);
 
         foreach (Collider obj in objetos)
@@ -35,19 +34,27 @@ public class Dinamita : MonoBehaviour
             Rigidbody rbObj = obj.GetComponent<Rigidbody>();
             if (rbObj != null)
             {
-                // Aplicar fuerza de explosión
                 rbObj.AddExplosionForce(fuerzaExplosion, transform.position, areaExplosion);
-                rbObj.isKinematic = true;
-            }
 
-            // Aquí podés agregar lógica para daño, efectos, etc.
-            rbObj.velocity = Vector3.zero;
-            rbObj.isKinematic = false;
+                // Ver si es un jugador afectado
+                if (obj.CompareTag("kart"))
+                {
+                    karControllerv2 kart = obj.GetComponent<karControllerv2>();
+                    if (kart != null)
+                        kart.Efecto();
+                }
+                else if (obj.CompareTag("kart2"))
+                {
+                    karControllerv3 kart = obj.GetComponent<karControllerv3>();
+                    if (kart != null)
+                        kart.Efecto();
+                }
+            }
         }
 
-        // Aquí podés agregar efectos visuales o sonido de explosión
+        // Podés poner aquí un efecto visual o sonido
 
-        // Destruir la dinamita después de explotar
         Destroy(gameObject);
     }
+
 }
