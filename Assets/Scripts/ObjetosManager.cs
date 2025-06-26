@@ -8,13 +8,18 @@ public class ObjetosManager : MonoBehaviour
     public GameObject cajaPrefab;
     public List<GameObject> items;
     public List<GameObject> karts;
+    public controladorCanvas ControlUI;
     karControllerv2 kartCod;
     karControllerv3 kartCod2;
+    controladorCanvas controlUI;
 
     public void Start()
     {
         kartCod = karts[0].GetComponent<karControllerv2>();
         kartCod2 = karts[1].GetComponent<karControllerv3>();
+        
+
+
     }
     public void SpawnearCajaDespues( Vector3 posicion)
     {
@@ -28,14 +33,30 @@ public class ObjetosManager : MonoBehaviour
         // Instancia la caja en la misma posición
         Instantiate(prefab, posicion, Quaternion.identity);
     }
+    public void DarItemConRuleta(int id){
+        controlUI.IniciarCorrutinaItems((indexItemFinal) =>
+        {
+            if (id == 1)
+            {
+                kartCod.RecItem(items[indexItemFinal]);
+            }
+            if (id == 2)
+            {
+                kartCod2.RecItem2(items[indexItemFinal]);
+            }
+        });
+    }
+    /*
     public void RandItemJ1()
     {
+        controlUI.IniciarCorrutinaItems();
         int aleatorio = Random.Range(0, 4);
         switch (aleatorio)
         {
             case 0: //dinamita
                 print("dinamita");
                 kartCod.RecItem(items[0]);
+                controlUI.MostrarItemIU(aleatorio);
                 break;
             case 1: //pilfrut
                 print("pilfrut");
@@ -76,4 +97,5 @@ public class ObjetosManager : MonoBehaviour
                 break;
         }
     }
+    */
 }

@@ -14,6 +14,7 @@ public class karControllerv3 : MonoBehaviour
     public GameObject none;
     public Transform spawner;
     public bool control;
+    public int IDkart;
 
     float speed, currentSpeed;
     float rotate, currentRotate;
