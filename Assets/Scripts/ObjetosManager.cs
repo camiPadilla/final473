@@ -8,10 +8,10 @@ public class ObjetosManager : MonoBehaviour
     public GameObject cajaPrefab;
     public List<GameObject> items;
     public List<GameObject> karts;
-    public controladorCanvas ControlUI;
     karControllerv2 kartCod;
     karControllerv3 kartCod2;
-    controladorCanvas controlUI;
+   public  controladorCanvas controlUI;
+    int aleatorio;
 
     public void Start()
     {
@@ -33,69 +33,64 @@ public class ObjetosManager : MonoBehaviour
         // Instancia la caja en la misma posición
         Instantiate(prefab, posicion, Quaternion.identity);
     }
-    public void DarItemConRuleta(int id){
-        controlUI.IniciarCorrutinaItems((indexItemFinal) =>
-        {
-            if (id == 1)
-            {
-                kartCod.RecItem(items[indexItemFinal]);
-            }
-            if (id == 2)
-            {
-                kartCod2.RecItem2(items[indexItemFinal]);
-            }
-        });
-    }
-    /*
+    
+    
     public void RandItemJ1()
     {
-        controlUI.IniciarCorrutinaItems();
-        int aleatorio = Random.Range(0, 4);
+        aleatorio = Random.Range(0, 4);
         switch (aleatorio)
         {
             case 0: //dinamita
                 print("dinamita");
                 kartCod.RecItem(items[0]);
-                controlUI.MostrarItemIU(aleatorio);
+                
+                controlUI.MostrarItemEnUI(aleatorio);
                 break;
             case 1: //pilfrut
                 print("pilfrut");
                 kartCod.RecItem(items[1]);
+                controlUI.MostrarItemEnUI(aleatorio);
                 break;
             case 2: //coca
                 print("coca");
                 //guardar en kart
                 kartCod.RecItem(items[2]);
+                controlUI.MostrarItemEnUI(aleatorio);
                 break;
             case 3: //MAS
                 print("MAS IPSP");
                 kartCod.RecItem(items[3]);
+                controlUI.MostrarItemEnUI(aleatorio);
                 break;
         }
     }
     //No quisiera usar mas codigo pero bueh....
    public void RandItemJ2(){
-        int aleatorio = Random.Range(0, 4);
+        aleatorio = Random.Range(0, 4);
         switch (aleatorio)
         {
             case 0: //dinamita
                 print("dinamita");
                 kartCod2.RecItem2(items[0]);
+                controlUI.MostrarItemEnUI(aleatorio);
                 break;
             case 1: //pilfrut
                 print("pilfrut");
                 kartCod2.RecItem2(items[1]);
+                controlUI.MostrarItemEnUI(aleatorio);
                 break;
             case 2: //coca
                 print("coca");
                 //guardar en kart
                 kartCod2.RecItem2(items[2]);
+                controlUI.MostrarItemEnUI(aleatorio);
                 break;
             case 3: //MAS
                 print("MAS IPSP");
                 kartCod2.RecItem2(items[3]);
+                controlUI.MostrarItemEnUI(aleatorio);
                 break;
         }
     }
-    */
+    
 }

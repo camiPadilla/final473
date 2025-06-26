@@ -15,20 +15,17 @@ public class controladorCanvas : MonoBehaviour
     float tiempo = 0f;
     bool activo = true;
     //variables para posicion
-    [SerializeField] Image posicionUI;
+    [SerializeField] Image posicionUI_J1;
+    [SerializeField] Image posicionUI_J2;
     [SerializeField] List<Sprite> posiciones;
-    int LugarVariable = 1;
     //variables para num Vuelta
     [SerializeField] TextMeshProUGUI vueltaUI;
-    int vuelta = 1;
     //variables para itemrandom
     [SerializeField] Image itemUI;
     [SerializeField] List<Sprite> items;
-    private Coroutine ruletaItems;
-    [Range(0.75f,1f)]
-    [SerializeField] float tiempoTotal;
-    [Range(0.045f, 0.085f)]
-    [SerializeField] float intervalo;
+    private Coroutine ruletaVisual;
+    [Range(0.75f, 1.5f)][SerializeField] float duracionRuleta = 1f;
+    [Range(0.04f, 0.1f)][SerializeField] float intervaloVisual = 0.05f;
     //WaitForSeconds intervaloRandom = new WaitForSeconds(0.01f);
     //variables para posicion grafica
     [SerializeField] List<Transform> miniaturasPersonajes;
@@ -37,49 +34,54 @@ public class controladorCanvas : MonoBehaviour
     public controladorCanvas canvas;
 
 
-    public void IniciarCorrutinaItems(System.Action<int> callback)
-    {
-        if (ruletaItems != null)
-            StopCoroutine(ruletaItems);
 
-        ruletaItems = StartCoroutine(RandomizarItems(callback));
+
+    public void IniciarCorrutinaItems()
+    {
+        if (ruletaVisual != null)
+            StopCoroutine(ruletaVisual);
+
+        ruletaVisual = StartCoroutine(RuletaVisual());
     }
 
 
-    public IEnumerator RandomizarItems(System.Action<int> callback)
+    private IEnumerator RuletaVisual()
     {
-        float tiempoTranscurrido = 0f;
-        int indexItemFinal = 0;
+        float tiempo = 0f;
 
-        while (tiempoTranscurrido < tiempoTotal)
+        while (tiempo < duracionRuleta)
         {
-            int indexItem = Random.Range(0, items.Count);
-            itemUI.sprite = items[indexItem];
-            yield return new WaitForSeconds(intervalo);
-            tiempoTranscurrido += intervalo;
+            int index = Random.Range(0, items.Count);
+            itemUI.sprite = items[index];
+
+            yield return new WaitForSeconds(intervaloVisual);
+            tiempo += intervaloVisual;
         }
 
-        indexItemFinal = Random.Range(0, items.Count);
-        itemUI.sprite = items[indexItemFinal];
-
-        callback(indexItemFinal); // devuelve el ítem real
+        // Se queda en uno al azar al final
+        int final = Random.Range(0, items.Count); ;
+        itemUI.sprite = items[final];
     }
+
 
     public void MostrarItemEnUI(int item)
     {
-        if (item >= 0 && item < items.Count)
-        {
             itemUI.sprite = items[item];
-        }
     }
     // Start is called before the first frame update
     void Start()
     {
-        //que haga el get component del objeto manager
-        //cronometroUI.text = "modificado";
+        int vuelta = 1;
         vueltaUI.text = $"{vuelta}";
-        posicionUI.sprite = posiciones[0];
+
+        // Posición inicial
+        if (posiciones.Count >= 2)
+        {
+            posicionUI_J1.sprite = posiciones[0]; // 1er
+            posicionUI_J2.sprite = posiciones[1]; // 2do
+        }
     }
+
 
     public void ActivarCronometro()
     {
@@ -99,44 +101,23 @@ public class controladorCanvas : MonoBehaviour
         cronometroUI.text = $"{minutos:00}:{segundos:00}:{milesimas:00}";
     }
 
-    void ActualizarVueltas()
+    public void ActualizarVueltasUI(int nuevaVuelta)
     {
-        //Cambiar para que se vea las vueltas
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            vuelta++;
-            if (vuelta > 3)
-            {
-                vuelta = 3;
-                
-            }
-            vueltaUI.text = $"{vuelta}";
-        }
+        vueltaUI.text = $"{nuevaVuelta}";
     }
 
-    void ActualizarPosicionNumerica()
+    public void ActualizarPosicionEnCarrera(int jugadorID, int lugar)
     {
-        int limite = posiciones.Count - 1;
-        //cambiar segun la posicion sin introducir botones
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (LugarVariable < limite)
-            {
-                LugarVariable++;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (LugarVariable > 0)
-            {
-                LugarVariable--;
-            }
-        }
-        if (LugarVariable >= 0 && LugarVariable <= limite)
-        {
-           posicionUI.sprite = posiciones[LugarVariable];
-        }
+        int indice = Mathf.Clamp(lugar, 0, posiciones.Count - 1);
+
+        if (jugadorID == 0)
+            posicionUI_J1.sprite = posiciones[indice];
+        
+        else if (jugadorID == 1)
+            posicionUI_J2.sprite = posiciones[indice];
     }
+
+
 
     void ActivarRandom()
     {
@@ -177,8 +158,7 @@ public class controladorCanvas : MonoBehaviour
     void Update()
     {
         ActivarCronometro();
-        ActualizarVueltas();
-        ActualizarPosicionNumerica();
+        //ActualizarVueltas();
         ActivarRandom();
         Opciones();
         //CambiarPosicionesGrafico();

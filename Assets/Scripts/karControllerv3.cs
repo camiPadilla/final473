@@ -15,6 +15,9 @@ public class karControllerv3 : MonoBehaviour
     public Transform spawner;
     public bool control;
     public int IDkart;
+    public int cpActual;
+    public int vuelta;
+    public GameManager gameManager;
 
     float speed, currentSpeed;
     float rotate, currentRotate;
@@ -182,6 +185,10 @@ public class karControllerv3 : MonoBehaviour
         sphere.angularVelocity = Vector3.zero;
         yield return new WaitForSeconds(7f);
         control = true;
+    }
+    public float ProgresoTotal()
+    {
+        return vuelta * 100 + cpActual;
     }
 
 }

@@ -2,7 +2,7 @@
 - Project name: final473
 - Unity version: Unity 2022.3.41f1
 - Active game object:
-  - Name: Sphere_2P
-  - Tag: kart2
+  - Name: Kart_Player1
+  - Tag: kart
   - Layer: Karts
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

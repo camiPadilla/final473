@@ -2805,6 +2805,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7858005077604422977, guid: ca98f6825abd25f4682d51eaf13eab10, type: 3}
+      propertyPath: controlUI
+      value: 
+      objectReference: {fileID: 1311620595}
+    - target: {fileID: 7858005077604422977, guid: ca98f6825abd25f4682d51eaf13eab10, type: 3}
+      propertyPath: prefabCaja
+      value: 
+      objectReference: {fileID: 516950389}
+    - target: {fileID: 7858005077604422977, guid: ca98f6825abd25f4682d51eaf13eab10, type: 3}
+      propertyPath: objetosManager
+      value: 
+      objectReference: {fileID: 749729197}
     - target: {fileID: 8314811264672651592, guid: ca98f6825abd25f4682d51eaf13eab10, type: 3}
       propertyPath: m_Name
       value: cajaPrefb
@@ -3285,6 +3297,22 @@ PrefabInstance:
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 1933293179}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: idCheckpoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.data[0]
+      value: 
+      objectReference: {fileID: 918395879}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1767640528}
     - target: {fileID: 6980788393234346062, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
       propertyPath: m_Size.z
       value: 6.5922356
@@ -3584,6 +3612,7 @@ MonoBehaviour:
   karts:
   - {fileID: 918395879}
   - {fileID: 1767640528}
+  controlUI: {fileID: 1311620595}
 --- !u!1 &753024945 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8067268390117022608, guid: 693eeca4d28043441b9a548c7104aedf, type: 3}
@@ -3890,37 +3919,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801517003}
   m_CullTransparentMesh: 1
---- !u!1 &812590452
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 812590453}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &812590453
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812590452}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.67, y: 9.9263, z: 4.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &825732204
 GameObject:
   m_ObjectHideFlags: 0
@@ -4412,11 +4410,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863479271}
   m_CullTransparentMesh: 1
---- !u!1 &864747375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8450592012825428967, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
-  m_PrefabInstance: {fileID: 1089045909414236287}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &879427331
 GameObject:
   m_ObjectHideFlags: 0
@@ -4686,9 +4679,12 @@ MonoBehaviour:
   acelereador: {fileID: 1775003654273975134, guid: 825616c94408edc48884151de1fd71a8, type: 3}
   objetosManager: {fileID: 749729197}
   items: {fileID: 2813825255990063916, guid: 02b6bf257b581bc4f90fcb0df0efbbc0, type: 3}
-  none: {fileID: 0}
+  none: {fileID: 2813825255990063916, guid: 02b6bf257b581bc4f90fcb0df0efbbc0, type: 3}
   spawner: {fileID: 930421847}
   control: 0
+  IdKart: 1
+  cpActual: 0
+  vuelta: 0
   acceleration: 40
   steering: 25
   gravity: 10
@@ -5111,6 +5107,22 @@ PrefabInstance:
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 1933293179}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: idCheckpoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.data[0]
+      value: 
+      objectReference: {fileID: 918395879}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1767640528}
     - target: {fileID: 6980788393234346062, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
       propertyPath: m_Size.z
       value: 6.5922356
@@ -5689,6 +5701,22 @@ PrefabInstance:
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 1933293179}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: idCheckpoint
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.data[0]
+      value: 
+      objectReference: {fileID: 918395879}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1767640528}
     - target: {fileID: 6980788393234346062, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
       propertyPath: m_Size.z
       value: 6.5922356
@@ -5711,7 +5739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9027455749149845843, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.8
+      value: 44.82
       objectReference: {fileID: 0}
     - target: {fileID: 9027455749149845843, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6156,6 +6184,57 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4369777325452683157, guid: 376538e8d58757e4ea71cab11fd8bc62, type: 3}
   m_PrefabInstance: {fileID: 3654428190138560634}
   m_PrefabAsset: {fileID: 0}
+--- !u!331 &1268242893
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268242889}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 5722cd38d7d84134684ac3808e7e4858, type: 3}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1281938573
 GameObject:
   m_ObjectHideFlags: 0
@@ -6242,7 +6321,7 @@ GameObject:
   - component: {fileID: 1311620596}
   - component: {fileID: 1311620595}
   m_Layer: 0
-  m_Name: ControladorUIinGame
+  m_Name: ControladorCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6261,7 +6340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cronometroUI: {fileID: 1384007687}
-  posicionUI: {fileID: 1049358265}
+  posicionUI_J1: {fileID: 1049358265}
+  posicionUI_J2: {fileID: 225047332}
   posiciones:
   - {fileID: 21300000, guid: 6faa7d237a0db014ba4d0e2573fefb33, type: 3}
   - {fileID: 21300000, guid: b31e50309834c5b469326e6bc2f731f1, type: 3}
@@ -6271,15 +6351,18 @@ MonoBehaviour:
   itemUI: {fileID: 288974293}
   items:
   - {fileID: 21300000, guid: 4135b9b08574a3f4b864b92a141ae349, type: 3}
+  - {fileID: 21300000, guid: 56249e51598d16740b0daae950f2da8b, type: 3}
   - {fileID: 21300000, guid: 755b29eaff2152a45891b58e88898de3, type: 3}
   - {fileID: 21300000, guid: 5722cd38d7d84134684ac3808e7e4858, type: 3}
-  - {fileID: 21300000, guid: 56249e51598d16740b0daae950f2da8b, type: 3}
-  tiempoTotal: 0.925
-  intervalo: 0.0573
+  duracionRuleta: 1
+  intervaloVisual: 0.05
   miniaturasPersonajes:
   - {fileID: 863479272}
   - {fileID: 934908347}
   - {fileID: 1801811498}
+  objMan: {fileID: 749729197}
+  gameManager: {fileID: 1933293179}
+  canvas: {fileID: 1311620595}
 --- !u!4 &1311620596
 Transform:
   m_ObjectHideFlags: 0
@@ -6852,11 +6935,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2992811646741679317, guid: 693eeca4d28043441b9a548c7104aedf, type: 3}
---- !u!1 &1463979646 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8450592012825428967, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
-  m_PrefabInstance: {fileID: 697918771}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1471041055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1513246815104807737, guid: 693eeca4d28043441b9a548c7104aedf, type: 3}
@@ -7227,6 +7305,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7858005077604422977, guid: ca98f6825abd25f4682d51eaf13eab10, type: 3}
+      propertyPath: controlUI
+      value: 
+      objectReference: {fileID: 1311620595}
+    - target: {fileID: 7858005077604422977, guid: ca98f6825abd25f4682d51eaf13eab10, type: 3}
       propertyPath: prefabCaja
       value: 
       objectReference: {fileID: 516950389}
@@ -7302,7 +7384,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4451470394597867417, guid: bb93e3d1ec5433041b61765dd25cf7b6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1718530658}
   m_SourcePrefab: {fileID: 100100000, guid: bb93e3d1ec5433041b61765dd25cf7b6, type: 3}
 --- !u!1 &1578533428
 GameObject:
@@ -7749,6 +7834,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701438528}
   m_CullTransparentMesh: 1
+--- !u!1 &1718530651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4451470394597867417, guid: bb93e3d1ec5433041b61765dd25cf7b6, type: 3}
+  m_PrefabInstance: {fileID: 1572068269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!331 &1718530658
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718530651}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 4135b9b08574a3f4b864b92a141ae349, type: 3}
+  m_MaskAlphaCutoff: 0.196
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1737458134 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4808892208236757092, guid: 693eeca4d28043441b9a548c7104aedf, type: 3}
@@ -7994,6 +8135,10 @@ MonoBehaviour:
   none: {fileID: 2813825255990063916, guid: 02b6bf257b581bc4f90fcb0df0efbbc0, type: 3}
   spawner: {fileID: 2143382745}
   control: 0
+  IDkart: 2
+  cpActual: 0
+  vuelta: 0
+  gameManager: {fileID: 1933293179}
   acceleration: 30
   steering: 50
   gravity: 10
@@ -8531,15 +8676,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8244eb39ae1ec0248a284242ca89e32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkPoints:
-  - {fileID: 864747375}
-  - {fileID: 2094967996}
-  - {fileID: 1463979646}
-  - {fileID: 1960635889}
   karts:
   - {fileID: 918395879}
   - {fileID: 1767640528}
-  cont: 0
+  vueltasTotales: 3
+  controlCanvas: {fileID: 1311620595}
 --- !u!1 &1944273292
 GameObject:
   m_ObjectHideFlags: 0
@@ -8674,11 +8815,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944273292}
   m_CullTransparentMesh: 1
---- !u!1 &1960635889 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8450592012825428967, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
-  m_PrefabInstance: {fileID: 1164604313}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1973814095
 GameObject:
   m_ObjectHideFlags: 0
@@ -9210,11 +9346,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045871440}
   m_CullTransparentMesh: 1
---- !u!1 &2094967996 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8450592012825428967, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
-  m_PrefabInstance: {fileID: 977068141}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2143382744
 GameObject:
   m_ObjectHideFlags: 0
@@ -9258,6 +9389,22 @@ PrefabInstance:
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 1933293179}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: idCheckpoint
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.data[0]
+      value: 
+      objectReference: {fileID: 918395879}
+    - target: {fileID: 4904132798722093065, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
+      propertyPath: karts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1767640528}
     - target: {fileID: 6980788393234346062, guid: 31e4de689053fcd4b8106f0b7ed214d9, type: 3}
       propertyPath: m_Size.z
       value: 6.5922356
@@ -9386,7 +9533,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4369777325452683157, guid: 376538e8d58757e4ea71cab11fd8bc62, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1268242893}
   m_SourcePrefab: {fileID: 100100000, guid: 376538e8d58757e4ea71cab11fd8bc62, type: 3}
 --- !u!1001 &7677263891483086703
 PrefabInstance:
@@ -9465,7 +9615,6 @@ SceneRoots:
   - {fileID: 3654428190138560634}
   - {fileID: 397632734}
   - {fileID: 1572068269}
-  - {fileID: 812590453}
   - {fileID: 918395880}
   - {fileID: 1767640530}
   - {fileID: 167656046}

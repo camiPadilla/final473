@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameManager GameManager;
+    public int idCheckpoint;
+    public List<GameObject> karts;
+    karControllerv2 kartCod;
+    karControllerv3 kartCod2;
 
-    GameManager gamCode;
-    void Start()
+    public void Start()
     {
-        gamCode = GameManager.GetComponent<GameManager>();
+        kartCod = karts[0].GetComponent<karControllerv2>();
+        kartCod2 = karts[1].GetComponent<karControllerv3>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("kart") || other.CompareTag("kart2")) {
-            print("CUENTAAA");
-            gamCode.cont +=1 ;
-            gamCode.ContVueltas();
+        // ¿Este collider tiene el script del jugador 1?
+        if (other.CompareTag("kart"))
+        {
+            print("Acaba de pasar el jugador1");
+            GameManager.instance.RegistrarCheckJugador1(kartCod, idCheckpoint);
+        }
+        // ¿O es el del jugador 2?
+        else if (other.CompareTag("kart2"))
+        {
+  
+            print("Acaba de pasar el jugador2");
+            GameManager.instance.RegistrarCheckJugador2(kartCod2, idCheckpoint);
         }
     }
 }
+
+

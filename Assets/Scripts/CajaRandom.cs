@@ -6,6 +6,7 @@ public class CajaRandom : MonoBehaviour
 {
     public GameObject prefabCaja;              
     public ObjetosManager objetosManager;
+    public controladorCanvas controlUI;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class CajaRandom : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        controlUI.IniciarCorrutinaItems();
         objetosManager.SpawnearCajaDespues(transform.position);
         if (other.CompareTag("kart"))
         {

@@ -1,44 +1,84 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public List<GameObject> checkPoints;
-    public List<GameObject> karts;
+    public static GameManager instance;
 
-    public int cont;
+    public List<GameObject> karts; // 0 = Jugador 1, 1 = Jugador 2
+    public int vueltasTotales = 3;
 
-    int vuelta = 0;
+    public controladorCanvas controlCanvas;
 
-    void Start()
+    private void Awake()
     {
+        instance = this;
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (vuelta == 4) {
-            print("juego terminado");
+        ActualizarOrdenCarrera();
+    }
+
+    public void RegistrarCheckJugador1(karControllerv2 jugador, int idCheckpoint)
+    {
+        int siguiente = (jugador.cpActual + 1) % 4;
+
+        if (idCheckpoint == siguiente)
+        {
+            jugador.cpActual++;
+
+            if (jugador.cpActual >= 4)
+            {
+                jugador.cpActual = 0;
+                jugador.vuelta++;
+
+                Debug.Log($"Jugador 1 completó vuelta {jugador.vuelta}");
+
+                controlCanvas.ActualizarVueltasUI(jugador.vuelta); // 0 = Jugador 1
+            }
         }
     }
 
-    public void ContVueltas() {
-        switch (cont) { 
-            case 4:
-                vuelta = 1; break;
-            case 8:
-                vuelta = 2; break;
-            case 12:
-                vuelta = 3; break;
-            case 16:
-                vuelta = 4; break;
+    public void RegistrarCheckJugador2(karControllerv3 jugador, int idCheckpoint)
+    {
+        int siguiente = (jugador.cpActual + 1) % 4;
+
+        if (idCheckpoint == siguiente)
+        {
+            jugador.cpActual++;
+
+            if (jugador.cpActual >= 4)
+            {
+                jugador.cpActual = 0;
+                jugador.vuelta++;
+
+                Debug.Log($"Jugador 2 completó vuelta {jugador.vuelta}");
+
+            }
         }
     }
-    public void RegistrarCheck() { 
-        
+
+    void ActualizarOrdenCarrera()
+    {
+        karControllerv2 j1 = karts[0].GetComponent<karControllerv2>();
+        karControllerv3 j2 = karts[1].GetComponent<karControllerv3>();
+
+        float prog1 = j1.ProgresoTotal();
+        float prog2 = j2.ProgresoTotal();
+
+        if (prog2 > prog1)
+        {
+            // Intercambiar visualmente
+            controlCanvas.ActualizarPosicionEnCarrera(1, 0); // Jugador 2 va primero
+            controlCanvas.ActualizarPosicionEnCarrera(0, 1); // Jugador 1 va segundo
+        }
+        else
+        {
+            controlCanvas.ActualizarPosicionEnCarrera(0, 0); // Jugador 1 va primero
+            controlCanvas.ActualizarPosicionEnCarrera(1, 1); // Jugador 2 va segundo
+        }
     }
 }
+

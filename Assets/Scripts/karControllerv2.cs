@@ -15,6 +15,8 @@ public class karControllerv2 : MonoBehaviour
     public Transform spawner;
     public bool control;
     public int IdKart;
+    public int cpActual;
+    public int vuelta;
 
     float speed, currentSpeed;
     float rotate, currentRotate;
@@ -22,9 +24,8 @@ public class karControllerv2 : MonoBehaviour
     float driftPower;
     bool drifting;
 
-    //Para el registro de vueltas y checkpoints
-    int checkpointsig;
-    int checkpointact;
+    //registro de vueltas y checkpoints
+    
 
     [Header("Parameters")]
     public float acceleration = 30f;
@@ -174,6 +175,10 @@ public class karControllerv2 : MonoBehaviour
         sphere.angularVelocity = Vector3.zero;
         yield return new WaitForSeconds(7f);
         control = true;
+    }
+    public float ProgresoTotal()
+    {
+        return vuelta * 100 + cpActual;
     }
 
 }
