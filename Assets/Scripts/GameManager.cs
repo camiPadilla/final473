@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> karts; 
     public int vueltasTotales = 3;
-
+  
     public controladorCanvas controlCanvas;
 
     void Awake()
@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
         if (instance == null)
             instance = this;
         else
-            Destroy(gameObject); 
+            Destroy(gameObject);
+
     }
     void Start()
     {
