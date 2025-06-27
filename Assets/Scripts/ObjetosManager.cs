@@ -13,13 +13,20 @@ public class ObjetosManager : MonoBehaviour
    public  controladorCanvas controlUI;
     int aleatorio;
 
+
+    private void Awake()
+    {
+        instance = this;
+
+        if (controlCanvas == null)
+        {
+            controlCanvas = FindObjectOfType<controladorCanvas>();
+        }
+    }
     public void Start()
     {
         kartCod = karts[0].GetComponent<karControllerv2>();
         kartCod2 = karts[1].GetComponent<karControllerv3>();
-        
-
-
     }
     public void SpawnearCajaDespues( Vector3 posicion)
     {

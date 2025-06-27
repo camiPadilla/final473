@@ -71,7 +71,7 @@ public class controladorCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int vuelta = 1;
+        int vuelta = 0;
         vueltaUI.text = $"{vuelta}";
 
         // Posición inicial
