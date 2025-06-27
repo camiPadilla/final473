@@ -17,7 +17,8 @@ public class karControllerv3 : MonoBehaviour
     public int IDkart;
     public int cpActual;
     public int vuelta;
-    
+    public bool invulnerable = false;
+
 
     float speed, currentSpeed;
     float rotate, currentRotate;
@@ -159,7 +160,7 @@ public class karControllerv3 : MonoBehaviour
         }
         if (items.name == "Pilfrut")
         {
-            print("invulnerable");
+            ActivarInvulnerabilidad(10f);
         }
         if (items.name == "Dinamita")
         {
@@ -173,6 +174,19 @@ public class karControllerv3 : MonoBehaviour
             Instantiate(items, transform.position - transform.forward*5f, Quaternion.identity);
         }
     }
+    public void ActivarInvulnerabilidad(float tiempo)
+    {
+        StartCoroutine(Invulnerabilidad(tiempo));
+    }
+
+    IEnumerator Invulnerabilidad(float tiempo)
+    {
+        invulnerable = true;
+        Debug.Log("invulnerable");
+        yield return new WaitForSeconds(tiempo);
+        invulnerable = false;
+        Debug.Log("no invulnerable");
+    }
     public void Efecto()
     {
         StartCoroutine(Congelado());
@@ -184,7 +198,7 @@ public class karControllerv3 : MonoBehaviour
         sphere.velocity = Vector3.zero;
         sphere.angularVelocity = Vector3.zero;
 
-        yield return new WaitForSeconds(15f);  
+        yield return new WaitForSeconds(15f);
 
         control = true;
     }

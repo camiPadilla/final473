@@ -33,10 +33,13 @@ public class GameManager : MonoBehaviour
                 jugador.cpActual = 0;
                 jugador.vuelta++;
 
-                Debug.Log($"Jugador 1 completó vuelta {jugador.vuelta}");
+                print("Player1 acaba de dar una vuelta :D");
 
                 controlCanvas.ActualizarVueltasUI(0, jugador.vuelta); // Jugador 1
             }
+        }
+        if (jugador.vuelta == vueltasTotales) {
+            print("Juego terminado!");
         }
     }
 
@@ -53,10 +56,14 @@ public class GameManager : MonoBehaviour
                 jugador.cpActual = 0;
                 jugador.vuelta++;
 
-                Debug.Log($"Jugador 2 completó vuelta {jugador.vuelta}");
+                print("Player2 acaba de dar una vuelta :D");
 
                 controlCanvas.ActualizarVueltasUI(1, jugador.vuelta); // Jugador 2
             }
+        }
+        if (jugador.vuelta == vueltasTotales)
+        {
+            print("Juego terminado!");
         }
     }
 

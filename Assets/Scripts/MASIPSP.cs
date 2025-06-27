@@ -17,8 +17,9 @@ public class MASIPSP : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-       
-        if (other.CompareTag("kart") || other.CompareTag("kart2")) {
+        karControllerv2 kart = other.GetComponent<karControllerv2>();
+        karControllerv3 kart2 = other.GetComponent<karControllerv3>();
+        if ((other.CompareTag("kart") || other.CompareTag("kart2")) && (!kart.invulnerable || !kart2.invulnerable)) {
             
             print("si reconozco");
             Rigidbody rb = other.GetComponent<Rigidbody>();

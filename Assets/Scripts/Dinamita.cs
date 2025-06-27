@@ -14,37 +14,36 @@ public class Dinamita : MonoBehaviour
     {
         if (!haExplotado)
         {
-            StartCoroutine(Explotar()); 
+            Explotar();
             haExplotado = true;
         }
     }
 
-    IEnumerator Explotar()
+    void Explotar()
     {
         Collider[] objetos = Physics.OverlapSphere(transform.position, areaExplosion, capasAfectadas);
 
         foreach (Collider obj in objetos)
         {
-            if (obj.TryGetComponent<Rigidbody>(out Rigidbody rbObj))
-            {
+            Rigidbody rbObj = obj.GetComponent<Rigidbody>();
+            if (rbObj != null)
                 rbObj.AddExplosionForce(fuerzaExplosion, transform.position, areaExplosion);
 
-                // Ver si es un kart
-                if (obj.CompareTag("kart"))
-                {
-                    if (obj.TryGetComponent<karControllerv2>(out var kart))
-                        kart.Efecto();  // Congelar
-                }
-                else if (obj.CompareTag("kart2"))
-                {
-                    if (obj.TryGetComponent<karControllerv3>(out var kart2))
-                        kart2.Efecto();  // Congelar
-                }
+            // Ver si es un jugador afectado
+            if (obj.CompareTag("kart"))
+            {
+                var kart = obj.GetComponent<karControllerv2>();
+                if (kart != null && !kart.invulnerable)
+                    kart.Efecto();
+            }
+            else if (obj.CompareTag("kart2"))
+            {
+                var kart = obj.GetComponent<karControllerv3>();
+                if (kart != null && !kart.invulnerable)
+                    kart.Efecto();
             }
         }
 
-
-        yield return new WaitForSeconds(0.2f);  
         Destroy(gameObject);
     }
 }
