@@ -42,7 +42,6 @@ public class ObjetosManager : MonoBehaviour
             case 0: //dinamita
                 print("dinamita");
                 kartCod.RecItem(items[0]);
-
                 controlUI.IniciarRuletaVisual(0, aleatorio);
                 break;
             case 1: //pilfrut

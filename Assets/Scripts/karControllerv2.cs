@@ -152,13 +152,13 @@ public class karControllerv2 : MonoBehaviour
         {
             ActivarInvulnerabilidad(10f); 
         }
-        if (items.name == "Dinamita")
+        if (items.name == "Dinamita  1")
         {
             GameObject dina = Instantiate(items, spawner.transform.position, spawner.transform.rotation);
             dina.GetComponent<Rigidbody>().AddForce(transform.forward + transform.up * 10f, ForceMode.Impulse);
             print("explosion");
         }
-        if (items.name == "MAS")
+        if (items.name == "Banderaa")
         {
             print("MASSSS");
             Instantiate(items, transform.position - transform.forward*5f, Quaternion.identity);
