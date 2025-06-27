@@ -39,7 +39,7 @@ public class karControllerv2 : MonoBehaviour
         transform.position = sphere.transform.position - new Vector3(0, 0.4f, 0);
 
         // Acelerar
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && control==true)
             speed = acceleration;
 
         // Girar
@@ -170,10 +170,12 @@ public class karControllerv2 : MonoBehaviour
 
     IEnumerator Congelado()
     {
-        control = false; 
+        control = false;
         sphere.velocity = Vector3.zero;
         sphere.angularVelocity = Vector3.zero;
-        yield return new WaitForSeconds(7f);
+
+        yield return new WaitForSeconds(15f); 
+
         control = true;
     }
     public float ProgresoTotal()

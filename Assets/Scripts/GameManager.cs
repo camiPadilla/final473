@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        
     }
 
     private void Update()
@@ -36,7 +35,7 @@ public class GameManager : MonoBehaviour
 
                 Debug.Log($"Jugador 1 completó vuelta {jugador.vuelta}");
 
-                controlCanvas.ActualizarVueltasUI(jugador.vuelta); // 0 = Jugador 1
+                controlCanvas.ActualizarVueltasUI(0, jugador.vuelta); // Jugador 1
             }
         }
     }
@@ -56,29 +55,30 @@ public class GameManager : MonoBehaviour
 
                 Debug.Log($"Jugador 2 completó vuelta {jugador.vuelta}");
 
+                controlCanvas.ActualizarVueltasUI(1, jugador.vuelta); // Jugador 2
             }
         }
     }
 
     void ActualizarOrdenCarrera()
     {
-        karControllerv2 j1 = karts[0].GetComponent<karControllerv2>();
-        karControllerv3 j2 = karts[1].GetComponent<karControllerv3>();
+        var j1 = karts[0].GetComponent<karControllerv2>();
+        var j2 = karts[1].GetComponent<karControllerv3>();
 
-        float prog1 = j1.ProgresoTotal();
+        float prog1 = j1.ProgresoTotal(); // vuelta * 100 + cpActual
         float prog2 = j2.ProgresoTotal();
 
-        if (prog2 > prog1)
+        if (prog1 > prog2)
         {
-            // Intercambiar visualmente
-            controlCanvas.ActualizarPosicionEnCarrera(1, 0); // Jugador 2 va primero
-            controlCanvas.ActualizarPosicionEnCarrera(0, 1); // Jugador 1 va segundo
+            controlCanvas.ActualizarPosicionEnCarrera(0, 0); // J1 primero
+            controlCanvas.ActualizarPosicionEnCarrera(1, 1); // J2 segundo
         }
-        else
+        else if (prog2 > prog1)
         {
-            controlCanvas.ActualizarPosicionEnCarrera(0, 0); // Jugador 1 va primero
-            controlCanvas.ActualizarPosicionEnCarrera(1, 1); // Jugador 2 va segundo
+            controlCanvas.ActualizarPosicionEnCarrera(0, 1); // J1 segundo
+            controlCanvas.ActualizarPosicionEnCarrera(1, 0); // J2 primero
         }
     }
+
 }
 

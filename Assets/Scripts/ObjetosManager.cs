@@ -10,19 +10,11 @@ public class ObjetosManager : MonoBehaviour
     public List<GameObject> karts;
     karControllerv2 kartCod;
     karControllerv3 kartCod2;
-   public  controladorCanvas controlUI;
+    public  controladorCanvas controlUI;
     int aleatorio;
 
 
-    private void Awake()
-    {
-        instance = this;
-
-        if (controlCanvas == null)
-        {
-            controlCanvas = FindObjectOfType<controladorCanvas>();
-        }
-    }
+    
     public void Start()
     {
         kartCod = karts[0].GetComponent<karControllerv2>();
@@ -50,24 +42,24 @@ public class ObjetosManager : MonoBehaviour
             case 0: //dinamita
                 print("dinamita");
                 kartCod.RecItem(items[0]);
-                
-                controlUI.MostrarItemEnUI(aleatorio);
+
+                controlUI.IniciarRuletaVisual(0, aleatorio);
                 break;
             case 1: //pilfrut
                 print("pilfrut");
                 kartCod.RecItem(items[1]);
-                controlUI.MostrarItemEnUI(aleatorio);
+                controlUI.IniciarRuletaVisual(0, aleatorio);
                 break;
             case 2: //coca
                 print("coca");
                 //guardar en kart
                 kartCod.RecItem(items[2]);
-                controlUI.MostrarItemEnUI(aleatorio);
+                controlUI.IniciarRuletaVisual(0, aleatorio);
                 break;
             case 3: //MAS
                 print("MAS IPSP");
                 kartCod.RecItem(items[3]);
-                controlUI.MostrarItemEnUI(aleatorio);
+                controlUI.IniciarRuletaVisual(0, aleatorio);
                 break;
         }
     }
@@ -79,23 +71,23 @@ public class ObjetosManager : MonoBehaviour
             case 0: //dinamita
                 print("dinamita");
                 kartCod2.RecItem2(items[0]);
-                controlUI.MostrarItemEnUI(aleatorio);
+                controlUI.IniciarRuletaVisual(1, aleatorio);
                 break;
             case 1: //pilfrut
                 print("pilfrut");
                 kartCod2.RecItem2(items[1]);
-                controlUI.MostrarItemEnUI(aleatorio);
+                controlUI.IniciarRuletaVisual(1, aleatorio);
                 break;
             case 2: //coca
                 print("coca");
                 //guardar en kart
                 kartCod2.RecItem2(items[2]);
-                controlUI.MostrarItemEnUI(aleatorio);
+                controlUI.IniciarRuletaVisual(1, aleatorio);
                 break;
             case 3: //MAS
                 print("MAS IPSP");
                 kartCod2.RecItem2(items[3]);
-                controlUI.MostrarItemEnUI(aleatorio);
+                controlUI.IniciarRuletaVisual(1, aleatorio);
                 break;
         }
     }

@@ -5,56 +5,46 @@ using UnityEngine;
 public class Dinamita : MonoBehaviour
 {
     public float areaExplosion = 5f;
-    public float fuerzaExplosion = 70f;
-    public LayerMask capasAfectadas;  
+    public float fuerzaExplosion = 50f;  // puedes bajarla si no quieres que vuelen tanto
+    public LayerMask capasAfectadas;
 
-    private Rigidbody rb;
     private bool haExplotado = false;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     void OnCollisionEnter(Collision collision)
     {
         if (!haExplotado)
         {
-            Explotar();
+            StartCoroutine(Explotar()); 
             haExplotado = true;
         }
     }
 
-    void Explotar()
+    IEnumerator Explotar()
     {
         Collider[] objetos = Physics.OverlapSphere(transform.position, areaExplosion, capasAfectadas);
 
         foreach (Collider obj in objetos)
         {
-            Rigidbody rbObj = obj.GetComponent<Rigidbody>();
-            if (rbObj != null)
+            if (obj.TryGetComponent<Rigidbody>(out Rigidbody rbObj))
             {
                 rbObj.AddExplosionForce(fuerzaExplosion, transform.position, areaExplosion);
 
-                // Ver si es un jugador afectado
+                // Ver si es un kart
                 if (obj.CompareTag("kart"))
                 {
-                    karControllerv2 kart = obj.GetComponent<karControllerv2>();
-                    if (kart != null)
-                        kart.Efecto();
+                    if (obj.TryGetComponent<karControllerv2>(out var kart))
+                        kart.Efecto();  // Congelar
                 }
                 else if (obj.CompareTag("kart2"))
                 {
-                    karControllerv3 kart = obj.GetComponent<karControllerv3>();
-                    if (kart != null)
-                        kart.Efecto();
+                    if (obj.TryGetComponent<karControllerv3>(out var kart2))
+                        kart2.Efecto();  // Congelar
                 }
             }
         }
 
-        // Podés poner aquí un efecto visual o sonido
 
+        yield return new WaitForSeconds(0.2f);  
         Destroy(gameObject);
     }
-
 }

@@ -17,7 +17,7 @@ public class karControllerv3 : MonoBehaviour
     public int IDkart;
     public int cpActual;
     public int vuelta;
-    public GameManager gameManager;
+    
 
     float speed, currentSpeed;
     float rotate, currentRotate;
@@ -37,7 +37,7 @@ public class karControllerv3 : MonoBehaviour
         transform.position = sphere.transform.position - new Vector3(0, 0.4f, 0);
 
         // Acelerar L1
-        if ( Input.GetButton("Fire2_P2"))
+        if ( Input.GetButton("Fire2_P2") && control==true)
         {
             //Debug.Log("L1");
             speed = acceleration;
@@ -180,10 +180,12 @@ public class karControllerv3 : MonoBehaviour
 
     IEnumerator Congelado()
     {
-        control = false; 
+        control = false;
         sphere.velocity = Vector3.zero;
         sphere.angularVelocity = Vector3.zero;
-        yield return new WaitForSeconds(7f);
+
+        yield return new WaitForSeconds(15f);  
+
         control = true;
     }
     public float ProgresoTotal()

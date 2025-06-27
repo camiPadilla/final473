@@ -19,15 +19,15 @@ public class CajaRandom : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        controlUI.IniciarCorrutinaItems();
         objetosManager.SpawnearCajaDespues(transform.position);
         if (other.CompareTag("kart"))
         {
+            
             objetosManager.RandItemJ1();
         }
         else if (other.CompareTag("kart2"))
         {
-
+           
             objetosManager.RandItemJ2();
         }
 
