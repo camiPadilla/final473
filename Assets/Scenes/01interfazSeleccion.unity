@@ -272,6 +272,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54785242}
   m_CullTransparentMesh: 1
+--- !u!1 &246648441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 246648442}
+  - component: {fileID: 246648443}
+  m_Layer: 0
+  m_Name: GuardaSeleccion
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &246648442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246648441}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: -56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &246648443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246648441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8aae7a71a060f41aa54193f97e7a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PersPlayer1: {fileID: 0}
+  PersPlayer2: {fileID: 0}
 --- !u!1 &352448906
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,18 +366,15 @@ MonoBehaviour:
   - nombre: Evo
     miniatura: {fileID: 0}
     modelo3D: {fileID: 0}
-  - nombre: Tuto
-    miniatura: {fileID: 0}
-    modelo3D: {fileID: 0}
+  - nombre: Arce
+    miniatura: {fileID: 21300000, guid: f4cd0ce8ec4e29e46a83c2b48a3ad190, type: 3}
+    modelo3D: {fileID: 919132149155446097, guid: 2e589a644a544c04b93880a01be5b863, type: 3}
   - nombre: Galindo
     miniatura: {fileID: 0}
     modelo3D: {fileID: 0}
   - nombre: Samuel
-    miniatura: {fileID: 0}
-    modelo3D: {fileID: 0}
-  - nombre: "A\xF1ez"
-    miniatura: {fileID: 0}
-    modelo3D: {fileID: 0}
+    miniatura: {fileID: 21300000, guid: 55ecc264ed769de4f84745d4adcec70d, type: 3}
+    modelo3D: {fileID: 919132149155446097, guid: 0e76d378b9c2b774d8d63cab79ed1093, type: 3}
 --- !u!1 &429070198
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +570,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0b2f31878035f3040a98ef71e66000dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55ecc264ed769de4f84745d4adcec70d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -787,7 +830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fb49d67db3a8a224e956fea1808ab39e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4cd0ce8ec4e29e46a83c2b48a3ad190, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1646,3 +1689,4 @@ SceneRoots:
   - {fileID: 567203539}
   - {fileID: 1183880711}
   - {fileID: 352448907}
+  - {fileID: 246648442}

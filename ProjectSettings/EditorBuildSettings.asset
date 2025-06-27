@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/01interfazSeleccion.unity
     guid: 7095baf40f32d864d87a7e3cdf17225d
-  - enabled: 0
-    path: Assets/Scenes/02interfazEnJuego.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/04mostrarControles.unity
-    guid: a035a24ee747a4b4bb0566a8031c3662
   - enabled: 1
     path: Assets/Scenes/05Juego.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/04mostrarControles.unity
+    guid: a035a24ee747a4b4bb0566a8031c3662
+  - enabled: 0
+    path: Assets/Scenes/02interfazEnJuego.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}

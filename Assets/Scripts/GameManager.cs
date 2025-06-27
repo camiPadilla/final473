@@ -5,14 +5,48 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public List<GameObject> karts; // 0 = Jugador 1, 1 = Jugador 2
+    public List<GameObject> karts; 
     public int vueltasTotales = 3;
 
     public controladorCanvas controlCanvas;
 
-    private void Awake()
+    void Awake()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject); 
+    }
+    void Start()
+    {
+        if (GuardaSeleccion.instancia != null)
+        {
+            // Eliminar modelos anteriores 
+            foreach (Transform child in karts[0].transform.Find("kart"))
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (Transform child in karts[1].transform.Find("kart"))
+            {
+                Destroy(child.gameObject);
+            }
+
+            //Instanciar modelos seleccionados como hijos
+            GameObject modelo1 = Instantiate(GuardaSeleccion.instancia.PersPlayer1, karts[0].transform.Find("kart"));
+            GameObject modelo2 = Instantiate(GuardaSeleccion.instancia.PersPlayer2, karts[1].transform.Find("kart"));
+
+            //Reiniciar la posición y rotación por si acaso
+            modelo1.transform.localPosition = Vector3.zero;
+            modelo1.transform.localRotation = Quaternion.identity;
+
+            modelo2.transform.localPosition = Vector3.zero;
+            modelo2.transform.localRotation = Quaternion.identity;
+        }
+        else
+        {
+            Debug.LogWarning("No hay datos de selección disponibles.");
+        }
     }
 
     private void Update()
