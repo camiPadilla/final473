@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
         }
         if (jugador.vuelta == vueltasTotales) {
             print("Juego terminado!");
+            controlCanvas.MostrarFinCarrera(0);
         }
     }
 
@@ -99,7 +100,9 @@ public class GameManager : MonoBehaviour
         if (jugador.vuelta == vueltasTotales)
         {
             print("Juego terminado!");
+            controlCanvas.MostrarFinCarrera(1);
         }
+
     }
 
     void ActualizarOrdenCarrera()

@@ -28,6 +28,18 @@ public class controladorCanvas : MonoBehaviour
     [SerializeField] Image itemUIJ2;
     [SerializeField] List<Sprite> items;
 
+    [Header("Paneles Fin de Carrera")]
+    [SerializeField] GameObject fondo;
+    [SerializeField] GameObject panelGanadorJ1;
+    [SerializeField] GameObject FraseGanadorJ1;
+    [SerializeField] GameObject panelPerdedorJ2;
+    [SerializeField] GameObject FrasePerdedorJ2;
+    [SerializeField] GameObject panelGanadorJ2;
+    [SerializeField] GameObject FraseGanadorJ2;
+    [SerializeField] GameObject panelPerdedorJ1;
+    [SerializeField] GameObject FrasePerdedorJ1;
+    [SerializeField] GameObject botonReiniciar;
+
     Coroutine ruletaVisualJ1;
     Coroutine ruletaVisualJ2;
     [Range(0.75f, 1.5f)][SerializeField] float duracionRuleta = 1f;
@@ -130,6 +142,27 @@ public class controladorCanvas : MonoBehaviour
             Time.timeScale = 1f;
             ControlladorEscenas.Instancia.OcultarOpciones();
         }
+    }
+    public void MostrarFinCarrera(int jugadorID)
+    {
+        if (jugadorID == 0)
+        {
+            panelGanadorJ1.SetActive(true);
+            FraseGanadorJ1.SetActive(true);
+            panelPerdedorJ2.SetActive(true);
+            FrasePerdedorJ2.SetActive(true);
+            fondo.SetActive(true);
+        }
+        else
+        {
+            panelGanadorJ2.SetActive(true);
+            FraseGanadorJ2.SetActive(true);
+            panelPerdedorJ1.SetActive(true);
+            FrasePerdedorJ1.SetActive(true);
+            fondo.SetActive(true);
+        }
+
+        botonReiniciar.SetActive(true);
     }
 }
 
