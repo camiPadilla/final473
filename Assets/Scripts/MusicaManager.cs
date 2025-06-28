@@ -14,8 +14,6 @@ public class MusicaManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            musica = GetComponent<AudioSource>();
-            DontDestroyOnLoad (musica);
             VeriEscena();
         }
         else { 
